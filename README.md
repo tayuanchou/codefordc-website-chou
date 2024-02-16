@@ -11,8 +11,13 @@ Welcome! This is the repository for the website for Civic Tech DC. It is a stati
 2. Now, install the correct version of Ruby.
 
 We use [asdf](https://asdf-vm.com/) and its [ruby plugin](https://github.com/asdf-vm/asdf-ruby) to configure Ruby for this project. You can see which version of Ruby we're using in the [.tool-versions](.tool-versions) file.
-
-First, if you're on Ubuntu, you may need to install some dependencies. If the `install` step doesn't work, try one or both of these commands:
+#### For Windows Users
+Since [asdf](https://asdf-vm.com/) relies on shell scripts that are not natively compatible with Windows command-line environments, a workable way for Windows users is through the Windows Subsystem Linux(WSL). To install WSL, open command prompt on windows and run:
+```
+wsl --install
+```
+Then restart the computer and install Remote Development on VScode.
+Now, if you're on Ubuntu, you may need to install some dependencies. If the `install` step doesn't work, try one or both of these commands:
 ```
 sudo apt install libyaml-dev
 sudo apt install libffi-dev
@@ -24,7 +29,11 @@ To install the Ruby plugin, run the following commands inside the project's dire
 asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
 asdf install
 ```
-
+If you are on Ubuntu and the above `asdf install` fails to build. Try:
+```
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/home/linuxbrew/.linuxbrew/Cellar/openssl@3/3.1.0"
+asdf install ruby 3.2.0
+```
 3. Install required gems.
 
 `bundle install`
